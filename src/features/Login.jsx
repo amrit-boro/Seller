@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { updateName } from "./user/userSlice";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 function Login() {
   useEffect(() => {
@@ -31,42 +31,32 @@ function Login() {
       <h2>Login</h2>
       <form onSubmit={handleSubmit}>
         <div className="form-group">
-          <label for="name">Name</label>
+          <label>Name</label>
           <input
             value={fullName}
             onChange={(e) => SetfullName(e.target.value)}
             type="name"
-            id="name"
             placeholder="Enter your name"
             required
           />
         </div>
         <div className="form-group">
-          <label for="email">Email</label>
-          <input
-            type="email"
-            id="email"
-            placeholder="Enter your email"
-            required
-          />
+          <label>Email</label>
+          <input type="email" placeholder="Enter your email" required />
         </div>
 
         <div className="form-group">
-          <label for="password">Password</label>
-          <input
-            type="password"
-            id="password"
-            placeholder="Enter your password"
-            required
-          />
+          <label>Password</label>
+          <input type="password" placeholder="Enter your password" required />
         </div>
 
         <button type="submit" className="login-button">
           Login
         </button>
       </form>
+
       <div className="footer-text">
-        Don't have an account? <a href="#">Sign up</a>
+        Don't have an account? <Link to={"/signup"}>Sign up</Link>
       </div>
     </div>
   );

@@ -10,6 +10,7 @@ header {
   padding: 10px 20px;
   background-color: #333;
   color: white;
+  gap: 18px;
 }
 
 .logo {
@@ -204,4 +205,146 @@ body.login-body {
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+/* For the profile ....................................... */
+
+.body-profile {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  display: flex;
+}
+.sidebar-profile {
+  width: 30%;
+  height: 100vh;
+  background-color: #ddd;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  margin-left: 70vh;
+}
+
+.profile-pic {
+  width: 80px;
+  height: 80px;
+  background-color: #bbb;
+  border-radius: 5px;
+  margin-bottom: 10px;
+}
+
+.input-box {
+  width: 60%;
+  margin: 5px 0;
+  padding: 5px;
+}
+
+.details-profile {
+  margin-top: 20px;
+  padding-top: 10px;
+  border-top: 4px solid rgb(73, 70, 70);
+  text-align: center;
+}
+
+.main-profile {
+  width: 75%;
+  padding-left: 40vh;
+  background-color: #f5f5f5;
+}
+
+.navbar-profile {
+  display: flex;
+
+  background-color: #e0e0e0;
+  border-bottom: 1px solid #aaa;
+}
+
+.nav-item-profile {
+  padding: 10px 15px;
+  border-right: 1px solid #aaa;
+  cursor: pointer;
+}
+
+.grid-profile {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  padding: 20px;
+  gap: 20px;
+}
+
+.grid-item-profile {
+  height: 150px;
+  background-color: #888;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.grid-item-profile img {
+  width: 50px;
+  opacity: 0.7;
+}
+
+.contact-profile {
+  display: flex;
+  padding-left: 50rem;
+}
+
+/* Signup........... */
+
+.signup-container {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #f2f2f2;
+}
+
+.signup-form {
+  background-color: white;
+  padding: 30px;
+  border-radius: 10px;
+  width: 350px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+}
+
+.signup-form h2 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.signup-form label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: 500;
+}
+
+.signup-form input {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.signup-form button {
+  width: 100%;
+  padding: 10px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  font-weight: bold;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.signup-form button:hover {
+  background-color: #0056b3;
+}
+
+.error {
+  color: red;
+  font-size: 0.85rem;
+  margin-top: -10px;
+  margin-bottom: 10px;
 }

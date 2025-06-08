@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import SideBar from "./LeftNavBar";
 import RightNavBar from "./RightNavBar";
 import { useSelector } from "react-redux";
+import User from "./SellerProfile/User";
 
 function NavBar() {
   const username = useSelector((state) => state.user.username);
@@ -15,11 +16,11 @@ function NavBar() {
           <input type="text" placeholder="SearchBar" />
           <button>🔍</button>
         </div>
-        <Link className="login-button-1" to={"/login"}>
-          {username ? username : "Login"}
+        <Link className="login-button-1" to={"/profile"}>
+          Become a seller
         </Link>
         <Link className="login-button-1" to={"/login"}>
-          {username ? username : "Login"}
+          {username ? <User username={username} /> : "Login"}
         </Link>
       </header>
       <div className="nav-container">
