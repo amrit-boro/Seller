@@ -21,7 +21,7 @@ header {
   display: flex;
   align-items: center;
   flex-grow: 1;
-  margin: 0 20px;
+  margin: 0 9rem;
 }
 .search-container input {
   width: 100%;
@@ -347,4 +347,126 @@ body.login-body {
   font-size: 0.85rem;
   margin-top: -10px;
   margin-bottom: 10px;
+}
+
+/* csss after login page........................................ */
+
+.top-bar2 {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #333;
+  padding: 10px 15px;
+}
+
+.logo2 {
+  font-weight: bold;
+  font-size: 20px;
+}
+
+.search-bar2 {
+  width: 59%;
+  padding: 6px;
+  font-size: 16px;
+}
+
+.search-button2 {
+  padding: 6px 10px;
+  font-size: 15px;
+  margin-left: -293px;
+  cursor: pointer;
+}
+
+.search-container2 {
+  position: relative;
+  width: 100%;
+  max-width: 400px;
+}
+
+.search-bar2 {
+  width: 100%;
+  padding: 6px 40px 6px 10px; /* space for button inside */
+  font-size: 16px;
+}
+
+.search-button2 {
+  position: absolute;
+  right: 5px;
+  top: 50%;
+  transform: translateY(-50%);
+  border: none;
+  background: none;
+  font-size: 18px;
+  cursor: pointer;
+}
+
+.account2 {
+  text-align: right;
+  font-size: 14px;
+}
+
+/* Navigation */
+.nav-bar2 {
+  display: flex;
+  background-color: #555;
+  padding: 8px;
+}
+
+.nav-all2 {
+  background-color: #888;
+  color: white;
+  padding: 5px 15px;
+  border: none;
+  cursor: pointer;
+}
+
+.nav-items2 {
+  margin-left: 10px;
+  font-size: 16px;
+  color: white;
+}
+
+/* Grid Layout */
+.grid-container2 {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  padding: 15px;
+}
+
+/* Profile Card */
+.profile-card2 {
+  background-color: white;
+  display: flex;
+  border: 1px solid #ccc;
+  height: 163px;
+}
+
+.profile-img2 {
+  width: 30%;
+  background-color: #777;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  color: white;
+}
+
+.profile-info2 {
+  width: 70%;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background-color: #eee;
+}
+
+.profile-name2 {
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.profile-items2 {
+  font-size: 14px;
+  color: #444;
 }

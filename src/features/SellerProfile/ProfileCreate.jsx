@@ -27,7 +27,7 @@ function ProfileCreate() {
           <input className="input-box" type="text" />
         </div>
         <div>
-          <label style={{ fontWeight: "bold" }}>Address2: </label>
+          <label style={{ fontWeight: "bold" }}>Alt ph no: </label>
           <input className="input-box" type="text" />
         </div>
 
@@ -52,6 +52,7 @@ function ProfileCreate() {
             Female
           </label>
         </div>
+        <button type="submit">submit</button>
       </form>
     </div>
   );
