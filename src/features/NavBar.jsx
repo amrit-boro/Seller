@@ -3,17 +3,31 @@ import SideBar from "./LeftNavBar";
 import RightNavBar from "./RightNavBar";
 import { useSelector } from "react-redux";
 import User from "./SellerProfile/User";
+import { useState } from "react";
 
 function NavBar() {
   const username = useSelector((state) => state.user.username);
+  const searName = useSelector((state) => state.search.searName);
   console.log(username);
+
+  const [searchValue, setSearchValue] = useState("oo");
+  function handleSearch(e) {
+    e.preventDefault();
+
+    setSearchValue(e.target.value);
+  }
 
   return (
     <>
       <header>
         <div className="logo">Logo</div>
         <div className="search-container">
-          <input type="text" placeholder="SearchBar" />
+          <input
+            type="text"
+            value={searName}
+            onChange={(e) => setSearchValue(e.target.value)}
+            placeholder="SearchBar"
+          />
           <button>🔍</button>
         </div>
         <Link className="login-button-1" to={"/profile"}>

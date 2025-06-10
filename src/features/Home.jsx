@@ -1,10 +1,20 @@
 import { useNavigate } from "react-router-dom";
+import { useItems } from "../hooks/useItems";
+import { useDispatch } from "react-redux";
+import { updateSearchName } from "./searchSlice";
 
 function Home() {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
+
   function handleClick() {
     navigate("/normaluser");
+    dispatch(updateSearchName(thirdItem.name));
   }
+
+  const { data, isLoading } = useItems();
+  const thirdItem = data?.[2];
+
   return (
     <>
       <div className="main-content">
@@ -12,10 +22,12 @@ function Home() {
           <div className="grid-item">
             <img
               onClick={handleClick}
-              src="https://gwapiwzfmrxxdvfysqbo.supabase.co/storage/v1/object/sign/item-images/badminton.jpeg?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV84MzdmZWRhMy00Y2QzLTQ0ZGMtYWE4OC01MTNmYWU4ZDNiZGIiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJpdGVtLWltYWdlcy9iYWRtaW50b24uanBlZyIsImlhdCI6MTc0OTM5NDk3NSwiZXhwIjoxNzgwOTMwOTc1fQ.4UEvCVcJ1QNT59VdXZf3ailBGREoH1f8IOWaGty-oCg"
+              src={isLoading ? "loading...." : thirdItem.img}
               alt=""
             />
-            <p>BADMINTON</p>
+            <p onClick={handleClick}>
+              {isLoading ? "loading...." : thirdItem.name}
+            </p>
           </div>
           <div className="grid-item">
             <img src="/src/assets/None.png" alt="" />

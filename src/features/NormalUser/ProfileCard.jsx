@@ -1,5 +1,8 @@
+import { useState } from "react";
+
 const ProfileCard = ({ item }) => {
   const { name, img } = item;
+
   return (
     <div className="profile-card2">
       <img className="profile-img2" src={img} />
