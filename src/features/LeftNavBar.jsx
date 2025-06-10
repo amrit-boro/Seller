@@ -3,11 +3,9 @@ import { FaBars } from "react-icons/fa";
 function SideBar() {
   return (
     <>
-      <div>
-        <button className="sidebar">
-          <FaBars />
-        </button>
-      </div>
+      <button className="nav-all2">
+        <FaBars />
+      </button>
     </>
   );
 }

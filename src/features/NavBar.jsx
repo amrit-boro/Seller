@@ -19,16 +19,17 @@ function NavBar() {
 
   return (
     <>
-      <header>
-        <div className="logo">Logo</div>
+      <header className="top-bar2">
+        <div className="logo2">Logo</div>
         <div className="search-container">
           <input
             type="text"
+            className="search-bar"
             value={searName}
             onChange={(e) => setSearchValue(e.target.value)}
             placeholder="SearchBar"
           />
-          <button>🔍</button>
+          <button className="search-button">🔍</button>
         </div>
         <Link className="login-button-1" to={"/profile"}>
           Become a seller
@@ -37,7 +38,7 @@ function NavBar() {
           {username ? <User username={username} /> : "Login"}
         </Link>
       </header>
-      <div className="nav-container">
+      <div className="nav-bar2">
         <SideBar />
         <RightNavBar />
       </div>

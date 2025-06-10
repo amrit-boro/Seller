@@ -32,12 +32,22 @@ function NormalUser() {
         <div className="account2">
           Hello, {username}
           <br />
-          <Link to={"/"}>Home</Link>
         </div>
       </header>
 
       <nav className="nav-bar2">
         <button className="nav-all2">= All</button>
+        <div className="nav-items2">Kesi</div>
+        <div className="nav-items2">Tripod</div>
+        <div className="nav-items2">Bag</div>
+        <div className="nav-items2">Speaker</div>
+        <div className="nav-items2">Mohmara</div>
+        <div className="nav-items2">Badminton</div>
+        <div className="nav-items2">Power Bank</div>
+        <div className="nav-items2">Items</div>
+        <div className="nav-items2">Items</div>
+        <div className="nav-items2">Items</div>
+        <div className="nav-items2">Items</div>
         <div className="nav-items2">Items</div>
       </nav>
 
