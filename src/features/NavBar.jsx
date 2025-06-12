@@ -19,29 +19,38 @@ function NavBar() {
 
   return (
     <>
-      <header className="top-bar2">
-        <div className="logo2">Logo</div>
-        <div className="search-container">
+      <header className="header1">
+        <h1 className="logo1">ShopZone</h1>
+
+        <div className="search-container-1">
           <input
             type="text"
-            className="search-bar"
-            value={searName}
-            onChange={(e) => setSearchValue(e.target.value)}
-            placeholder="SearchBar"
+            className="search-1"
+            placeholder="Search for products..."
           />
-          <button className="search-button">🔍</button>
+          <span className="search-icon-1">🔍</span>
         </div>
-        <Link className="login-button-1" to={"/profile"}>
-          Become a seller
-        </Link>
-        <Link className="login-button-1" to={"/login"}>
-          {username ? <User username={username} /> : "Login"}
-        </Link>
+        <div className="header-buttons">
+          <Link className="login-button-1" to={"/profile"}>
+            Become a seller
+          </Link>
+
+          <Link className="login-button-1" to={"/login"}>
+            {username ? <User username={username} /> : "Login"}
+          </Link>
+
+          <button className="cart-btn-1">🛒 Cart</button>
+        </div>
       </header>
-      <div className="nav-bar2">
-        <SideBar />
-        <RightNavBar />
-      </div>
+      <nav className="nav">
+        <ul>
+          <li>Electronics</li>
+          <li>Fashion</li>
+          <li>Books</li>
+          <li>Grocery</li>
+          <li>Beauty</li>
+        </ul>
+      </nav>
     </>
   );
 }

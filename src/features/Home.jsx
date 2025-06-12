@@ -5,13 +5,11 @@ function Home() {
   const { data, isLoading } = useItems();
 
   return (
-    <>
-      <div className="jd">
-        {isLoading
-          ? "loading..."
-          : data.map((item) => <HomeItem item={item} key={item.id} />)}
-      </div>
-    </>
+    <main className="product-grid">
+      {isLoading
+        ? "loading..."
+        : data.map((item) => <HomeItem item={item} key={item.id} />)}
+    </main>
   );
 }
 

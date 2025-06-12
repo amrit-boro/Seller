@@ -14,11 +14,12 @@ function HomeItem({ item }) {
   }
 
   return (
-    <div className="grid-container">
-      <div className="grid-item">
-        <img onClick={handleClick} src={img} alt="" />
-        <p onClick={handleClick}>{name}</p>
-      </div>
+    <div className="product-card" onClick={handleClick}>
+      <img src={img} alt="img" />
+      <h3>{name}</h3>
+      <p className="rating">{"⭐".repeat(4)}</p>
+      <p className="price">$200</p>
+      <button className="add-btn">Add to Cart</button>
     </div>
   );
 }

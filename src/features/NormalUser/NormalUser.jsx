@@ -21,12 +21,7 @@ function NormalUser() {
       <header className="top-bar2">
         <div className="logo2">Logo</div>
         <div className="search-container">
-          <input
-            type="text"
-            className="search-bar"
-            onChange={handleSearch}
-            value={searchName}
-          />
+          <input type="text" onChange={handleSearch} value={searchName} />
           <button className="search-button">🔍</button>
         </div>
         <div className="account2">
