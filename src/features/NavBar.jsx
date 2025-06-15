@@ -1,55 +1,55 @@
 import { Link } from "react-router-dom";
-import SideBar from "./LeftNavBar";
-import RightNavBar from "./RightNavBar";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import User from "./SellerProfile/User";
-import { useState } from "react";
+import { useItems } from "../hooks/useItems";
+import Navbarlist from "./Navbarlist";
+import { updateSearchName } from "./searchSlice";
 
 function NavBar() {
   const username = useSelector((state) => state.user.username);
-  const searName = useSelector((state) => state.search.searName);
-  console.log(username);
+  const searchname = useSelector((state) => state.search.searchName);
+  console.log(searchname);
+  const { data: items, isLoading } = useItems();
+  const dispatch = useDispatch();
 
-  const [searchValue, setSearchValue] = useState("oo");
   function handleSearch(e) {
     e.preventDefault();
-
-    setSearchValue(e.target.value);
+    dispatch(updateSearchName(e.target.value));
   }
 
   return (
     <>
-      <header className="header1">
-        <h1 className="logo1">ShopZone</h1>
-
-        <div className="search-container-1">
+      <header className="top-bar2">
+        <div className="logo2">ShopeZone</div>
+        <div className="search-container">
           <input
             type="text"
-            className="search-1"
+            onChange={handleSearch}
+            value={searchname}
             placeholder="Search for products..."
           />
-          <span className="search-icon-1">🔍</span>
+          <button className="search-button">🔍</button>
         </div>
+
         <div className="header-buttons">
           <Link className="login-button-1" to={"/profile"}>
             Become a seller
           </Link>
 
           <Link className="login-button-1" to={"/login"}>
-            {username ? <User username={username} /> : "Login"}
+            {username ? <User username={username} /> : "Login / SignUp"}
           </Link>
 
           <button className="cart-btn-1">🛒 Cart</button>
         </div>
       </header>
-      <nav className="nav">
-        <ul>
-          <li>Electronics</li>
-          <li>Fashion</li>
-          <li>Books</li>
-          <li>Grocery</li>
-          <li>Beauty</li>
-        </ul>
+
+      <nav className="nav-bar2">
+        <button className="nav-all2">= All</button>
+
+        {isLoading
+          ? "loading"
+          : items.map((item) => <Navbarlist item={item} key={item.id} />)}
       </nav>
     </>
   );

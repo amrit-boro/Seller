@@ -1,32 +1,58 @@
 import { useState } from "react";
 import { BsPersonCircle } from "react-icons/bs";
+import { useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
+import { updateName } from "../user/userSlice";
 
 const ProfileCard = ({ item }) => {
   const { name: itemName, img, SellerName, itemDescription, Location } = item;
+  console.log("item Name: ", itemName);
+  const [showBig, setShowBig] = useState(false);
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+
+  function handleToggle() {
+    setShowBig((prev) => !prev);
+    console.log(("itemmm", itemName));
+    navigate("/profilee", { state: item });
+  }
 
   return (
-    <div className="card-container">
-      <div className="profile-card2">
-        <img src={img} alt="Badminton" className="profile-img2" />
-        <div className="profile-info2">
-          <div>
-            <div className="profile-name2">
-              <BsPersonCircle />
-              {SellerName}
-            </div>
-            <div className="profile-items2">
-              Item Description: {itemDescription}
-            </div>
-            <div className="profile-items2">Location:{Location}</div>
-            <div className="profile-items2">{itemName}</div>
+    <>
+      <div className="card-container">
+        {/* Card Outer Wrapper */}
+        <div className="profile-card2">
+          {/* Image Section */}
+          <div className="profile-image-section">
+            <img src={img} alt="Badminton" className="profile-img2" />
           </div>
-          <div className="profile-buttons">
-            <button className="colorbrw">More detail</button>
-            <button className="borrow">Borrow</button>
+
+          {/* Info Section */}
+          <div className="profile-info2">
+            {/* Seller & Item Details */}
+            <div className="profile-details">
+              <div className="profile-name2">
+                <BsPersonCircle />
+                {SellerName}
+              </div>
+              <div className="profile-items2">
+                Item Description: {itemDescription}
+              </div>
+              <div className="profile-items2">Location: {Location}</div>
+              <div style={{ fontWeight: "bold" }}>{itemName}</div>
+            </div>
+
+            {/* Buttons */}
+            <div className="profile-buttons">
+              <button className="colorbrw" onClick={handleToggle}>
+                More detail
+              </button>
+              <button className="borrow">Borrow</button>
+            </div>
           </div>
         </div>
       </div>
-    </div>
+    </>
   );
 };
 

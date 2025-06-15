@@ -1,5 +1,6 @@
 import { Outlet } from "react-router-dom";
 import NavBar from "./NavBar";
+import AdBarr from "./advertisement/AdBarr";
 
 function Layout() {
   return (
@@ -7,6 +8,7 @@ function Layout() {
       <div>
         <NavBar />
       </div>
+      <AdBarr />
       <div>
         <main>
           <Outlet />

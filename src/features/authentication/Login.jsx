@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
-import { updateName } from "./user/userSlice";
-import { Link, useNavigate } from "react-router-dom";
-import { login } from "../services/apiAuth";
-import { Uselogin } from "../features/user/useLogin";
+import { updateName } from "../user/userSlice";
+import { Link } from "react-router-dom";
+import { Uselogin } from "../user/useLogin";
+import Spinner from "../ui/Spinner";
 
 function Login() {
   useEffect(() => {
@@ -74,7 +74,7 @@ function Login() {
         </div>
 
         <button type="submit" disabled={isLoading} className="login-button">
-          {!isLoading ? "Log in " : "......"}
+          {!isLoading ? "login" : <Spinner />}
         </button>
       </form>
 

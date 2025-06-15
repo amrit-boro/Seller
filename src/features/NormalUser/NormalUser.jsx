@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { useItems } from "../../hooks/useItems";
 import { updateSearchName } from "../searchSlice";
+import AdBarr from "../advertisement/AdBarr";
 
 function NormalUser() {
   const dispatch = useDispatch();
@@ -19,7 +20,7 @@ function NormalUser() {
   return (
     <>
       <header className="top-bar2">
-        <div className="logo2">Logo</div>
+        <div className="logo2">ShopeZone</div>
         <div className="search-container">
           <input type="text" onChange={handleSearch} value={searchName} />
           <button className="search-button">🔍</button>
@@ -45,6 +46,7 @@ function NormalUser() {
         <div className="nav-items2">Items</div>
         <div className="nav-items2">Items</div>
       </nav>
+      <AdBarr />
 
       {isLoading ? (
         "loading..."
@@ -55,6 +57,8 @@ function NormalUser() {
           ))}
         </main>
       )}
+
+      {/* {isLoading ? "loading...." : <ProfileCard data={data} />} */}
     </>
   );
 }

@@ -9,8 +9,8 @@ function HomeItem({ item }) {
   const dispatch = useDispatch();
 
   function handleClick() {
-    navigate("/normaluser");
     dispatch(updateSearchName(name));
+    navigate("/normaluser");
   }
 
   return (
