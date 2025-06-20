@@ -10,6 +10,7 @@ function HomeItem({ item }) {
 
   function handleClick() {
     dispatch(updateSearchName(name));
+
     navigate("/normaluser");
   }
 
