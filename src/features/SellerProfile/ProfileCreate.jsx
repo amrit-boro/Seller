@@ -5,19 +5,19 @@ export default function ProfileCreate() {
   const navigate = useNavigate();
 
   const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    mobile: "",
-    businessName: "",
-    businessType: "",
-    address: "",
-    pan: "",
-    gst: "",
-    accountHolder: "",
-    accountNumber: "",
-    ifsc: "",
+    name: "amriti",
+    email: "yahoo@com",
+    mobile: "123",
+    businessName: "individual",
+    businessType: "single",
+    address: "guwahti",
+    pan: "123",
+    gst: "123",
+    accountHolder: "123",
+    accountNumber: "123",
+    ifsc: "123",
     categories: [],
-    brand: "",
+    brand: "honda",
     agreement: false,
   });
 

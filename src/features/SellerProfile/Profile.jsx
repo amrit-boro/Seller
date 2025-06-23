@@ -41,13 +41,17 @@ const Profile = ({ seller }) => {
 
 // Basic inline styles (for simplicity)
 const styles = {
+  body: {
+    margin: 0,
+    padding: 0,
+  },
   container: {
     display: "flex",
     height: "100vh",
     fontFamily: "Arial, sans-serif",
   },
   sidebar: {
-    width: "60vh",
+    width: "70vh",
     borderRight: "1px solid #ccc",
     padding: "20px",
     boxSizing: "border-box",

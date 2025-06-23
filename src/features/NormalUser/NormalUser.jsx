@@ -4,8 +4,9 @@ import { Link } from "react-router-dom";
 import { useItems } from "../../hooks/useItems";
 import { updateSearchName } from "../searchSlice";
 import AdBarr from "../advertisement/AdBarr";
-import User from "../SellerProfile/User";
 import LogInLink from "../authentication/LogInLink";
+import Navbarlist from "../Navbarlist";
+import CardSkeleton from "./CardSkeleton";
 
 function NormalUser() {
   const dispatch = useDispatch();
@@ -35,32 +36,21 @@ function NormalUser() {
 
       <nav className="nav-bar2">
         <button className="nav-all2">= All</button>
-        <div className="nav-items2">Kesi</div>
-        <div className="nav-items2">Tripod</div>
-        <div className="nav-items2">Bag</div>
-        <div className="nav-items2">Speaker</div>
-        <div className="nav-items2">Mohmara</div>
-        <div className="nav-items2">Badminton</div>
-        <div className="nav-items2">Power Bank</div>
-        <div className="nav-items2">Items</div>
-        <div className="nav-items2">Items</div>
-        <div className="nav-items2">Items</div>
-        <div className="nav-items2">Items</div>
-        <div className="nav-items2">Items</div>
+
+        {isLoading
+          ? "loading"
+          : items.map((item) => <Navbarlist item={item} key={item.id} />)}
       </nav>
+
       <AdBarr />
 
-      {isLoading ? (
-        "loading..."
-      ) : (
-        <main className="grid-container2">
-          {items.map((item) => (
-            <ProfileCard item={item} key={item.id} />
-          ))}
-        </main>
-      )}
-
-      {/* {isLoading ? "loading...." : <ProfileCard data={data} />} */}
+      <main className="grid-container2">
+        {isLoading ? (
+          <CardSkeleton card={9} />
+        ) : (
+          items.map((item) => <ProfileCard item={item} key={item.id} />)
+        )}
+      </main>
     </>
   );
 }

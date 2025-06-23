@@ -1,11 +1,12 @@
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import User from "./SellerProfile/User";
 import { useItems } from "../hooks/useItems";
 import Navbarlist from "./Navbarlist";
 import { updateSearchName } from "./searchSlice";
 import { BsPersonCircle } from "react-icons/bs";
 import LogInLink from "./authentication/LogInLink";
+import Skeleton from "react-loading-skeleton";
+import "react-loading-skeleton/dist/skeleton.css";
 
 function NavBar() {
   const username = useSelector((state) => state.user.username);
@@ -56,9 +57,11 @@ function NavBar() {
       <nav className="nav-bar2">
         <button className="nav-all2">= All</button>
 
-        {isLoading
-          ? "loading"
-          : items.map((item) => <Navbarlist item={item} key={item.id} />)}
+        {isLoading ? (
+          <Skeleton width={80} height={20} />
+        ) : (
+          items.map((item) => <Navbarlist item={item} key={item.id} />)
+        )}
       </nav>
     </>
   );

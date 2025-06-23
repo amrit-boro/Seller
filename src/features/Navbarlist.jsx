@@ -5,14 +5,13 @@ import { useNavigate } from "react-router-dom";
 function Navbarlist({ item }) {
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const { name, id } = item;
 
   function handleToggle(e) {
     e.preventDefault();
     dispatch(updateSearchName(name));
-    navigate("/normaluser");
+    navigate(`/${encodeURIComponent(name)}/${id}`);
   }
-
-  const { name } = item;
 
   return (
     <>

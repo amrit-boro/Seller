@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { updateSearchName } from "./searchSlice";
 
 function HomeItem({ item }) {
-  const { name, img } = item;
+  const { name, img, id } = item;
 
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -11,7 +11,7 @@ function HomeItem({ item }) {
   function handleClick() {
     dispatch(updateSearchName(name));
 
-    navigate("/normaluser");
+    navigate(`/${encodeURIComponent(name)}/${id}`);
   }
 
   return (

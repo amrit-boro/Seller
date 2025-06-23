@@ -1,10 +1,13 @@
-import { useLocation } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import AdBarr from "../advertisement/AdBarr";
 import { useSelector } from "react-redux";
 import ItemDetails from "../Item/ItemDettails";
+import Navbarlist from "../Navbarlist";
+import { useItems } from "../../hooks/useItems";
 
 function Profilee() {
   const location = useLocation();
+  const { data: items, isLoading } = useItems();
   const username = useSelector((state) => state.user.username);
 
   const {
@@ -17,11 +20,14 @@ function Profilee() {
   } = location.state; // here you get the full item passed
 
   // const itemAtIndex2 = items?.[2];
+  console.log("Profilee.");
 
   return (
     <>
       <header className="top-bar2">
-        <div className="logo2">ShopeZone</div>
+        <Link className="logo2" to={"/"}>
+          ShopeZone
+        </Link>
         <div className="search-container">
           <input type="text" />
           <button className="search-button">🔍</button>
@@ -34,18 +40,10 @@ function Profilee() {
 
       <nav className="nav-bar2">
         <button className="nav-all2">= All</button>
-        <div className="nav-items2">Kesi</div>
-        <div className="nav-items2">Tripod</div>
-        <div className="nav-items2">Bag</div>
-        <div className="nav-items2">Speaker</div>
-        <div className="nav-items2">Mohmara</div>
-        <div className="nav-items2">Badminton</div>
-        <div className="nav-items2">Power Bank</div>
-        <div className="nav-items2">Items</div>
-        <div className="nav-items2">Items</div>
-        <div className="nav-items2">Items</div>
-        <div className="nav-items2">Items</div>
-        <div className="nav-items2">Items</div>
+
+        {isLoading
+          ? "loading"
+          : items.map((item) => <Navbarlist item={item} key={item.id} />)}
       </nav>
 
       {/* Add */}
