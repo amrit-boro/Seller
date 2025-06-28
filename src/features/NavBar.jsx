@@ -58,7 +58,7 @@ function NavBar() {
         <button className="nav-all2">= All</button>
 
         {isLoading ? (
-          <Skeleton width={80} height={20} />
+          <Skeleton />
         ) : (
           items.map((item) => <Navbarlist item={item} key={item.id} />)
         )}

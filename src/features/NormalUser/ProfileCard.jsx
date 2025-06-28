@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { BsPersonCircle } from "react-icons/bs";
+import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
 const ProfileCard = ({ item }) => {
@@ -11,13 +12,25 @@ const ProfileCard = ({ item }) => {
     itemDescription,
     Location,
   } = item;
-  console.log("item Name: ", itemName);
+
+  const isAuthenticate = useSelector((state) => state.user.isAuthenticate);
+
   const [showBig, setShowBig] = useState(false);
   const navigate = useNavigate();
 
   function handleToggle() {
-    setShowBig((prev) => !prev);
-    navigate(`/${id}`, { state: item });
+    // setShowBig((prev) => !prev);
+    navigate(`/${id}`, {
+      state: { itemName, img, SellerName, itemDescription, Location, id },
+    });
+  }
+
+  function handleBorrow() {
+    if (!isAuthenticate) {
+      navigate("/login");
+    } else {
+      navigate(`/borrow/${id}`, { state: item });
+    }
   }
 
   return (
@@ -49,7 +62,9 @@ const ProfileCard = ({ item }) => {
             <button className="colorbrw" onClick={handleToggle}>
               More detail
             </button>
-            <button className="borrow">Borrow</button>
+            <button className="borrow" onClick={handleBorrow}>
+              Borrow
+            </button>
           </div>
         </div>
       </div>

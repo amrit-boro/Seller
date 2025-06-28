@@ -1,6 +1,6 @@
 import { useForm } from "react-hook-form";
+import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { useSignUp } from "./useSignUp";
 
 // Email regex pattern: /\S+@\S+\.\S+/
 
@@ -8,19 +8,19 @@ function SignUp() {
   const { register, formState, getValues, handleSubmit, reset } = useForm();
   const { errors } = formState;
   const navigate = useNavigate();
-  const { signup, isloading } = useSignUp();
+  const user = useSelector((state) => state.user);
+  // console.log("user details: ", user);
 
   function onSubmit(data) {
-    const { signup_fullname, signup_email, signup_password } = data;
-    signup(
-      {
-        fullname: signup_fullname,
-        email: signup_email,
-        password: signup_password,
-      },
-      { onSettled: reset }
-    );
-    navigate("/login");
+    const {
+      signup_fullname,
+      signup_phone_number,
+      signup_email,
+      signup_password,
+      signup_passwordConfirm,
+    } = data;
+
+    // navigate("/login");
   }
 
   return (
@@ -34,7 +34,7 @@ function SignUp() {
 
         {/* Full Name */}
         <div>
-          <label htmlFor="fullname">Full Name</label>
+          <label>Full Name</label>
           <input
             type="text"
             id="fullname"
@@ -45,6 +45,21 @@ function SignUp() {
           />
           {errors.signup_fullname && (
             <p className="error">{errors.signup_fullname.message}</p>
+          )}
+        </div>
+        {/* Phone Number */}
+        <div>
+          <label>Phone Number</label>
+          <input
+            type="number"
+            id="phone_number"
+            autoComplete="off"
+            {...register("signup_phone_number", {
+              required: "This field is required",
+            })}
+          />
+          {errors.signup_phoneNumber && (
+            <p className="error">{errors.signup_phone_number.message}</p>
           )}
         </div>
 
@@ -109,7 +124,9 @@ function SignUp() {
 
         {/* Buttons */}
         <div style={{ display: "flex", gap: "15px" }}>
-          <button type="reset">Cancel</button>
+          <button type="reset" onClick={() => navigate("/login")}>
+            Cancel
+          </button>
           <button type="submit">Create New</button>
         </div>
       </form>

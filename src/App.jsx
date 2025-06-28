@@ -11,6 +11,8 @@ import NomalUser from "./features/NormalUser/NormalUser";
 import { Toaster } from "react-hot-toast";
 import Profilee from "./features/NormalUser/Profilee";
 import Profile from "./features/SellerProfile/Profile";
+import Borrow from "./features/Item/Borrow";
+import VisitProfile from "./features/ui/VisitProfile";
 
 const router = createBrowserRouter([
   {
@@ -37,6 +39,14 @@ const router = createBrowserRouter([
   {
     path: "/sellerprofile",
     element: <Profile />,
+  },
+  {
+    path: "borrow/:id",
+    element: <Borrow />,
+  },
+  {
+    path: "profile/:name/:id",
+    element: <VisitProfile />,
   },
   {
     element: <Layout />,

@@ -1,17 +1,22 @@
-import { useItems } from "../../hooks/useItems";
+import { useProducts } from "../user/useProduct";
 import ProductSkeletonLoader from "./ProductSkeletonLoader";
 import SellerItemList from "./SellerItemList";
 
 function SellerProducts() {
-  const { data, isLoading } = useItems();
+  const { data, isLoading, isError } = useProducts(); // coming from the real database... use this every where to access the value....
+
+  const products = data?.data?.products || [];
+
+  console.log(products);
+
   return (
     <>
       {isLoading ? (
         <ProductSkeletonLoader count={9} />
       ) : (
         <div style={styles.container}>
-          {data.map((items) => (
-            <SellerItemList items={items} key={items.id} />
+          {products.map((item) => (
+            <SellerItemList items={item} key={item._id} />
           ))}
         </div>
       )}

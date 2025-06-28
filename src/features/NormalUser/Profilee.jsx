@@ -9,18 +9,20 @@ function Profilee() {
   const location = useLocation();
   const { data: items, isLoading } = useItems();
   const username = useSelector((state) => state.user.username);
+  const { itemName, img, SellerName, itemDescription, Location, id } =
+    location.state;
 
-  const {
-    name: itemName,
-    img,
-    SellerName,
-    itemDescription,
-    Location,
-    discount,
-  } = location.state; // here you get the full item passed
+  // const {
+  //   name: itemName,
+  //   img,
+  //   SellerName,
+  //   itemDescription,
+  //   Location,
+  //   discount,
+  // } = location.state;
+  // here you get the full item passed
 
   // const itemAtIndex2 = items?.[2];
-  console.log("Profilee.");
 
   return (
     <>
@@ -47,15 +49,28 @@ function Profilee() {
       </nav>
 
       {/* Add */}
-      <AdBarr itemName={itemName} discount={discount} />
-
+      <AdBarr itemName={itemName} discount={10} />
       <ItemDetails
         img={img}
         SellerName={SellerName}
         itemDescription={itemDescription}
         Location={Location}
         itemName={itemName}
+        id={id}
       />
+
+      {/* {isLoading
+        ? "loading"
+        : items.map((item) => (
+            <ItemDetails
+              img={img}
+              SellerName={SellerName}
+              itemDescription={itemDescription}
+              Location={Location}
+              itemName={itemName}
+              item={item}
+            />
+          ))} */}
     </>
   );
 }

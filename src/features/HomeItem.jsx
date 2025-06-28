@@ -3,10 +3,12 @@ import { useNavigate } from "react-router-dom";
 import { updateSearchName } from "./searchSlice";
 
 function HomeItem({ item }) {
-  const { name, img, id } = item;
-
   const navigate = useNavigate();
   const dispatch = useDispatch();
+
+  // console.log("actual data coming from the databbase: ", data);
+
+  const { name, img, id } = item;
 
   function handleClick() {
     dispatch(updateSearchName(name));

@@ -10,7 +10,7 @@ export function Uselogin() {
     mutationFn: ({ email, password }) => loginApi({ email, password }),
     onSuccess: (user) => {
       console.log("user: ", user);
-      navigate("/");
+      navigate(-1);
     },
     onError: (err) => {
       console.log("ERROR: ", err);

@@ -1,6 +1,7 @@
 import { Outlet } from "react-router-dom";
 import NavBar from "./NavBar";
 import AdBarr from "./advertisement/AdBarr";
+import ScrollTop from "./ui/ScrollTop";
 
 function Layout() {
   return (
@@ -11,6 +12,8 @@ function Layout() {
       <AdBarr />
       <div>
         <main>
+          <ScrollTop />
+
           <Outlet />
         </main>
       </div>
