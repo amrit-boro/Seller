@@ -49,7 +49,8 @@ function Profilee() {
       </nav>
 
       {/* Add */}
-      <AdBarr itemName={itemName} discount={10} />
+      {/* <AdBarr itemName={itemName} discount={10} /> */}
+
       <ItemDetails
         img={img}
         SellerName={SellerName}
@@ -58,19 +59,6 @@ function Profilee() {
         itemName={itemName}
         id={id}
       />
-
-      {/* {isLoading
-        ? "loading"
-        : items.map((item) => (
-            <ItemDetails
-              img={img}
-              SellerName={SellerName}
-              itemDescription={itemDescription}
-              Location={Location}
-              itemName={itemName}
-              item={item}
-            />
-          ))} */}
     </>
   );
 }
