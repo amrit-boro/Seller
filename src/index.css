@@ -1204,9 +1204,11 @@ body.login-body {
 
 .visit-profile-card {
   background: #ebebeb;
-  padding: 15px;
+  padding: 31px;
   border-radius: 15px;
   width: 50vh;
+  margin-top: 53px;
+  height: 42vh;
   /* box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); */
 }
 

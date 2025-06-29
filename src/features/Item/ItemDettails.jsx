@@ -111,27 +111,63 @@ function ItemDetails({
                   <FaFacebook />
                   <FaWhatsapp />
                   <FaLinkedin />
+                  <div></div>
+                  <div></div>
+                  <div></div>
                 </div>
                 {/* Borrow */}
-                <div
-                  style={{
-                    backgroundColor: "#ffe600",
-                    padding: "10px 20px",
-                    fontWeight: "bold",
-                    border: "4px",
-                    color: "#676060",
-                    fontSize: "18px",
-                    boxShadow: "2px 2px 5px rgba(0, 0, 0, 0.2)",
-                    borderRadius: "5px",
-                    transition: "transform 0.2s ease",
-                    cursor: "pointer",
-                  }}
-                  onClick={handleBorrow}
-                >
-                  Borrow
-                </div>
               </div>
             </div>
+          </div>
+        </div>
+
+        <div
+          style={{
+            display: "flex",
+            gap: "30px",
+            justifyContent: "flex-start",
+            paddingTop: "6px",
+          }}
+        >
+          <div
+            style={{
+              backgroundColor: "#ed9e00",
+              padding: "10px 79px",
+
+              fontWeight: "bold",
+              border: "4px",
+              color: "#676060",
+              width: "190px",
+              textAlign: "center",
+              fontSize: "18px",
+              boxShadow: "2px 2px 5px rgba(0, 0, 0, 0.2)",
+              borderRadius: "5px",
+              transition: "transform 0.2s ease",
+              cursor: "pointer",
+            }}
+            onClick={handleBorrow}
+          >
+            Add to Cart
+          </div>
+          <div
+            style={{
+              backgroundColor: "#ffe600",
+              padding: "10px 70px ",
+
+              fontWeight: "bold",
+              border: "4px",
+              color: "#676060",
+              width: "190px",
+              textAlign: "center",
+              fontSize: "18px",
+              boxShadow: "2px 2px 5px rgba(0, 0, 0, 0.2)",
+              borderRadius: "5px",
+              transition: "transform 0.2s ease",
+              cursor: "pointer",
+            }}
+            onClick={handleBorrow}
+          >
+            Borrow
           </div>
         </div>
         <div className="product-about">
