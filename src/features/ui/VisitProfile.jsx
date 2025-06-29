@@ -129,7 +129,9 @@ function VisitProfile() {
               I sell beautiful handmade crafts, kitchenware, and home
               accessories.
             </p>
-            <p className="visit-location">Delhi, India</p>
+            <p className="visit-location">
+              Guwahati Amingaon Kalipahar jayguru
+            </p>
             <p className="visit-rating">
               ⭐ 4.7 <span>(128 reviews)</span>
             </p>
@@ -140,15 +142,16 @@ function VisitProfile() {
             <p>
               <strong>Phone:</strong> +91 98765 43210
             </p>
-            <p>
-              <strong>Website:</strong> <a href="#">https://janestore.com</a>
-            </p>
 
-            <div className="visit-social-icons">
-              <FaInstagram />
-              <FaFacebook />
-              <FaWhatsapp />
-              <FaLinkedin />
+            <div>
+              <div className="visit-social-icons">
+                <div style={{ display: "flex", gap: "18px" }}>
+                  <FaInstagram />
+                  <FaFacebook />
+                  <FaWhatsapp />
+                  <FaLinkedin />
+                </div>
+              </div>
             </div>
           </div>
 
