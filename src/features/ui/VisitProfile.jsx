@@ -5,6 +5,11 @@ import {
   FaWhatsapp,
   FaLinkedin,
 } from "react-icons/fa";
+import { useDispatch, useSelector } from "react-redux";
+import { updateSearchName } from "../searchSlice";
+import LogInLink from "../authentication/LogInLink";
+import { BsPersonCircle } from "react-icons/bs";
+import { Link } from "react-router-dom";
 
 function VisitProfile() {
   const [show, setShow] = useState();
@@ -107,16 +112,66 @@ function VisitProfile() {
 
     // Add more products...
   ];
+
+  const [formData, setFormData] = useState({
+    fullName: "",
+    userId: "",
+    email: "",
+    phoneNumber: "",
+    organization: "",
+    itemName: "",
+    itemId: "",
+    category: "",
+    borrowDate: "",
+    returnDate: "",
+    purpose: "",
+    agreeTerms: false,
+  });
+
+  const username = useSelector((state) => state.user.username);
+  const searchname = useSelector((state) => state.search.searchName);
+  console.log(searchname);
+  const dispatch = useDispatch();
+
+  function handleSearch(e) {
+    e.preventDefault();
+    dispatch(updateSearchName(e.target.value));
+  }
+
   return (
     <>
       <div className="visit-page">
-        <header className="visit-navbar">
-          <span role="img" aria-label="cart">
-            🛒
-          </span>
-          <h2>ShopZone</h2>
-        </header>
+        <header className="top-bar2">
+          {/* <div className="logo2">ShopeZone</div> */}
+          <Link className="logo2" to={"/"}>
+            ShopZone
+          </Link>
+          <div className="search-container">
+            <input
+              type="text"
+              onChange={handleSearch}
+              value={searchname}
+              placeholder="Search for products..."
+            />
+            <button className="search-button">🔍</button>
+          </div>
 
+          <div className="header-buttons">
+            {/* Seller */}
+            <Link className="login-button-1" to={"/profile"}>
+              Become a seller
+            </Link>
+
+            <div style={{ display: "flex" }}>
+              <div style={{ paddingTop: "3px" }}>
+                <BsPersonCircle size={25} color="#555" />
+              </div>
+              <LogInLink username={username} />
+            </div>
+
+            <button className="cart-btn-1">🛒 Cart</button>
+          </div>
+        </header>
         <div className="visit-main-content">
           <div className="visit-profile-card">
             <img

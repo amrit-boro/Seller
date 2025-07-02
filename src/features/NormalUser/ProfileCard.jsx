@@ -29,7 +29,7 @@ const ProfileCard = ({ item }) => {
     if (!isAuthenticate) {
       navigate("/login");
     } else {
-      navigate(`/borrow/${id}`, { state: item });
+      navigate(`/borrow/${id}`, { state: img });
     }
   }
 

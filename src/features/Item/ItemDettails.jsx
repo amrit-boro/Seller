@@ -19,7 +19,7 @@ function ItemDetails({
     if (!isAuthenticate) {
       navigate("/login");
     } else {
-      navigate(`/borrow/${id}`);
+      navigate(`/borrow/${id}`, { state: img });
     }
   }
 

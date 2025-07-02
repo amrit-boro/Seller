@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link, useLocation } from "react-router-dom";
 
 function Borrow() {
   const [formData, setFormData] = useState({
@@ -18,6 +18,9 @@ function Borrow() {
   });
 
   const navigate = useNavigate();
+  const location = useLocation();
+
+  const img = location.state;
 
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
@@ -30,162 +33,172 @@ function Borrow() {
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log("Borrow Request Submitted:", formData);
-    // You can add validation or send data to a server here
+    // Add validation or send to server
   };
 
   return (
-    <form style={styles.container} onSubmit={handleSubmit}>
-      <h2 style={styles.heading}>Borrow Item Request</h2>
+    <>
+      <header className="top-bar2" style={styles.header}>
+        <Link className="logo2" to={"/"} style={styles.logo}>
+          ShopeZone
+        </Link>
+        <div className="search-container">
+          <input type="text" />
+          <button className="search-button">🔍</button>
+        </div>
+        <div className="account2">Hello</div>
+      </header>
 
-      <label style={styles.label}>Full Name</label>
-      <input
-        style={styles.input}
-        type="text"
-        name="fullName"
-        value={formData.fullName}
-        onChange={handleChange}
-        required
-      />
+      <form style={styles.flexWrapper} onSubmit={handleSubmit}>
+        {/* Left: Product Image */}
+        <div style={styles.imageContainer}>
+          <img src={img} alt="Product" style={styles.productImage} />
+        </div>
 
-      <label style={styles.label}>Email</label>
-      <input
-        style={styles.input}
-        type="email"
-        name="email"
-        value={formData.email}
-        onChange={handleChange}
-        required
-      />
+        {/* Right: Form Fields */}
+        <div style={styles.formContainer}>
+          <h2 style={styles.heading}>Borrow Item Request</h2>
 
-      <label style={styles.label}>Phone Number</label>
-      <input
-        style={styles.input}
-        type="tel"
-        name="phoneNumber"
-        value={formData.phoneNumber}
-        onChange={handleChange}
-        required
-      />
+          {[
+            { label: "Full Name", name: "fullName", type: "text" },
+            { label: "Email", name: "email", type: "email" },
+            { label: "Phone Number", name: "phoneNumber", type: "tel" },
+            { label: "Item Name", name: "itemName", type: "text" },
+            { label: "Borrow Date", name: "borrowDate", type: "date" },
+            { label: "Expected Return Date", name: "returnDate", type: "date" },
+          ].map(({ label, name, type }) => (
+            <div key={name}>
+              <label style={styles.label}>{label}</label>
+              <input
+                style={styles.input}
+                type={type}
+                name={name}
+                value={formData[name]}
+                onChange={handleChange}
+                required
+              />
+            </div>
+          ))}
 
-      <label style={styles.label}>Item Name</label>
-      <input
-        style={styles.input}
-        type="text"
-        name="itemName"
-        value={formData.itemName}
-        onChange={handleChange}
-        required
-      />
+          <label style={styles.label}>Purpose of Borrowing</label>
+          <textarea
+            style={{ ...styles.input, resize: "vertical", height: "60px" }}
+            name="purpose"
+            rows="3"
+            value={formData.purpose}
+            onChange={handleChange}
+            placeholder="Describe purpose (optional)"
+          />
 
-      {/* <label style={styles.label}>Category</label>
-      <select
-        style={styles.input}
-        name="category"
-        value={formData.category}
-        onChange={handleChange}
-        required
-      >
-        <option value="">Select Category</option>
-        <option value="electronics">Electronics</option>
-        <option value="books">Books</option>
-        <option value="tools">Tools</option>
-        <option value="others">Others</option>
-      </select> */}
+          <div style={styles.checkboxContainer}>
+            <input
+              type="checkbox"
+              name="agreeTerms"
+              checked={formData.agreeTerms}
+              onChange={handleChange}
+              required
+            />
+            <label style={{ fontSize: "13px" }}>
+              I agree to the terms and conditions
+            </label>
+          </div>
 
-      <label style={styles.label}>Borrow Date</label>
-      <input
-        style={styles.input}
-        type="date"
-        name="borrowDate"
-        value={formData.borrowDate}
-        onChange={handleChange}
-        required
-      />
-
-      <label style={styles.label}>Expected Return Date</label>
-      <input
-        style={styles.input}
-        type="date"
-        name="returnDate"
-        value={formData.returnDate}
-        onChange={handleChange}
-        required
-      />
-
-      <label style={styles.label}>Purpose of Borrowing</label>
-      <textarea
-        style={styles.input}
-        name="purpose"
-        rows="3"
-        value={formData.purpose}
-        onChange={handleChange}
-        placeholder="Describe purpose (optional)"
-      />
-
-      <div style={styles.checkboxContainer}>
-        <input
-          type="checkbox"
-          name="agreeTerms"
-          checked={formData.agreeTerms}
-          onChange={handleChange}
-          required
-        />
-        <label>I agree to the terms and conditions</label>
-      </div>
-
-      <div style={{ display: "flex", gap: "16px" }}>
-        <button onClick={() => navigate(-1)} style={styles.button}>
-          cancel
-        </button>
-        <button type="submit" style={styles.button}>
-          Submit Request
-        </button>
-      </div>
-    </form>
+          <div style={{ display: "flex", gap: "12px" }}>
+            <button
+              type="button"
+              onClick={() => navigate(-1)}
+              style={styles.button}
+            >
+              Cancel
+            </button>
+            <button type="submit" style={styles.button}>
+              Submit Request
+            </button>
+          </div>
+        </div>
+      </form>
+    </>
   );
 }
 
 const styles = {
-  container: {
-    maxWidth: "600px",
-    margin: "40px auto",
-    padding: "30px",
+  header: {
+    backgroundColor: "#192734",
+    color: "#fff",
+    padding: "10px 20px",
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "space-between",
+  },
+  logo: {
+    fontSize: "20px",
+    fontWeight: "bold",
+    color: "#fff",
+    textDecoration: "none",
+  },
+  flexWrapper: {
+    display: "flex",
+    width: "95%",
+    maxWidth: "1100px",
+    margin: "20px auto",
     backgroundColor: "#fff",
     borderRadius: "10px",
-    boxShadow: "0 0 10px rgba(0,0,0,0.1)",
+    boxShadow: "0 0 8px rgba(0,0,0,0.1)",
     fontFamily: "Arial, sans-serif",
+    overflow: "hidden",
+  },
+  imageContainer: {
+    width: "30%",
+    backgroundColor: "#f1f1f1",
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+    padding: "10px",
+  },
+  productImage: {
+    width: "100%",
+    maxWidth: "230px",
+    borderRadius: "6px",
+  },
+  formContainer: {
+    width: "70%",
+    padding: "20px 25px",
+  },
+  heading: {
+    textAlign: "center",
+    fontSize: "20px",
+    marginBottom: "16px",
   },
   label: {
     display: "block",
-    marginBottom: "6px",
+    marginBottom: "4px",
+    fontSize: "14px",
     fontWeight: "bold",
   },
   input: {
     width: "100%",
-    padding: "10px",
-    marginBottom: "20px",
+    padding: "8px",
+    marginBottom: "12px",
     border: "1px solid #ccc",
-    borderRadius: "6px",
+    borderRadius: "5px",
+    fontSize: "14px",
     boxSizing: "border-box",
   },
   checkboxContainer: {
     display: "flex",
     alignItems: "center",
-    marginBottom: "20px",
+    marginBottom: "12px",
+    gap: "8px",
   },
   button: {
-    width: "100%",
-    padding: "12px",
+    flex: 1,
+    padding: "10px",
     backgroundColor: "#007BFF",
     color: "white",
-    fontSize: "16px",
+    fontSize: "14px",
     border: "none",
-    borderRadius: "6px",
+    borderRadius: "5px",
     cursor: "pointer",
-  },
-  heading: {
-    textAlign: "center",
-    marginBottom: "25px",
   },
 };
 
