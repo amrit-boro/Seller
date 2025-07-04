@@ -1,4 +1,4 @@
-import { data, Link } from "react-router-dom";
+import { data, Link, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { useItems } from "../hooks/useItems";
 import Navbarlist from "./Navbarlist";
@@ -7,20 +7,35 @@ import { BsPersonCircle } from "react-icons/bs";
 import LogInLink from "./authentication/LogInLink";
 import Skeleton from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
-import { useProducts } from "./user/useProduct";
+import { useProducts, useSeeProducts } from "./user/useProduct";
+import { useState } from "react";
 
 function NavBar() {
   const username = useSelector((state) => state.user.username);
   const searchname = useSelector((state) => state.search.searchName);
   // const { data: items, isLoading } = useItems();
-  const { data, isLoading } = useProducts();
-  const products = data?.data?.products || [];
+  const navigate = useNavigate();
   const dispatch = useDispatch();
 
+  const { data: searchProductsRaw, isLoading } = useSeeProducts(searchname);
+  const searchProducts = searchProductsRaw?.data?.products || [];
+
+  console.log("see badminton: ", searchProducts);
+  const navlist = ["Badminton", "Bag", "Power Bank", "Scissor"];
+
+  // const allproducts = allproductsRaw?.data?.products || [];
+
+  // const dispatch = useDispatch();
+  // State to hold the current value of the search input
+
   function handleSearch(e) {
-    e.preventDefault();
-    dispatch(updateSearchName(e.target.value));
+    if (e.key == "Enter" && searchname.trim()) {
+      // Navigate to new URL with search query
+      dispatch(updateSearchName(searchname));
+      navigate(`/search?name=${searchname}`);
+    }
   }
+  // dispatch(updateSearchName(e.target.value));
 
   return (
     <>
@@ -32,8 +47,9 @@ function NavBar() {
         <div className="search-container">
           <input
             type="text"
-            onChange={handleSearch}
             value={searchname}
+            onChange={(e) => dispatch(updateSearchName(e.target.value))}
+            onKeyDown={handleSearch}
             placeholder="Search for products..."
           />
           <button className="search-button">🔍</button>
@@ -59,11 +75,9 @@ function NavBar() {
       <nav className="nav-bar2">
         <button className="nav-all2">= All</button>
 
-        {isLoading ? (
-          <Skeleton />
-        ) : (
-          products.map((item) => <Navbarlist item={item} key={item._id} />)
-        )}
+        {navlist.map((item) => (
+          <Navbarlist item={item} key={item.length} />
+        ))}
       </nav>
     </>
   );

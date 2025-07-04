@@ -4,8 +4,8 @@ import "react-loading-skeleton/dist/skeleton.css";
 function ItemSkeleton({ card }) {
   return Array(card)
     .fill(0)
-    .map(() => (
-      <div className="product-card skeleton">
+    .map((_, index) => (
+      <div className="product-card skeleton" key={index}>
         <div className="skeleton-image"></div>
         <div className="skeleton-text title"></div>
         <div className="skeleton-stars"></div>

@@ -14,6 +14,7 @@ import Profile from "./features/SellerProfile/Profile";
 import Borrow from "./features/Item/Borrow";
 import VisitProfile from "./features/ui/VisitProfile";
 import SellerLongin from "./features/authentication/SellerLogin";
+import Search from "./features/Item/Search";
 
 const router = createBrowserRouter([
   {
@@ -26,7 +27,7 @@ const router = createBrowserRouter([
     element: <SignUp />,
   },
   {
-    path: "/:name/:id",
+    path: "/search",
     element: <NomalUser />,
   },
   {
@@ -48,6 +49,10 @@ const router = createBrowserRouter([
   {
     path: "borrow/:id",
     element: <Borrow />,
+  },
+  {
+    path: "/search/:productName",
+    element: <Search />,
   },
   {
     path: "profile/:name/:id",

@@ -1,8 +1,8 @@
 function CardSkeleton({ card }) {
   return Array(card)
     .fill(0)
-    .map(() => (
-      <div className="card-skeleton">
+    .map((_, index) => (
+      <div className="card-skeleton" key={index}>
         <div className="skeleton-left"></div>
         <div className="skeleton-right">
           <div className="skeleton-line name"></div>

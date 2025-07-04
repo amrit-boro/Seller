@@ -8,18 +8,20 @@ function HomeItem({ item }) {
 
   // console.log("actual data coming from the databbase: ", data);
 
-  const { name, price, images, _id } = item;
+  const { name: itemName, price, description, createdAt, images, _id } = item;
 
   function handleClick() {
-    dispatch(updateSearchName(name));
+    dispatch(updateSearchName(itemName));
 
-    navigate(`/${encodeURIComponent(name)}/${_id}`);
+    navigate(`/${_id}`, {
+      state: { itemName, images, description, createdAt, _id },
+    });
   }
 
   return (
     <div className="product-card" onClick={handleClick}>
-      <img src={images} alt={name} />
-      <h3>{name}</h3>
+      <img src={images} alt={itemName} />
+      <h3>{itemName}</h3>
       <p className="rating">{"⭐".repeat(4)}</p>
       <p className="price">${price}</p>
       <button className="add-btn">Add to Cart</button>
