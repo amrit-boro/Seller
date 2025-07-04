@@ -8,20 +8,20 @@ function HomeItem({ item }) {
 
   // console.log("actual data coming from the databbase: ", data);
 
-  const { name, img, id } = item;
+  const { name, price, images, _id } = item;
 
   function handleClick() {
     dispatch(updateSearchName(name));
 
-    navigate(`/${encodeURIComponent(name)}/${id}`);
+    navigate(`/${encodeURIComponent(name)}/${_id}`);
   }
 
   return (
     <div className="product-card" onClick={handleClick}>
-      <img src={img} alt={name} />
+      <img src={images} alt={name} />
       <h3>{name}</h3>
       <p className="rating">{"⭐".repeat(4)}</p>
-      <p className="price">$200</p>
+      <p className="price">${price}</p>
       <button className="add-btn">Add to Cart</button>
     </div>
   );

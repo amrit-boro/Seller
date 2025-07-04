@@ -1,10 +1,12 @@
 function SellerItemList({ items }) {
-  const { name, price } = items; // This is coming from the real database..... not from the supabase
+  // const x = items;
+  // console.log(x);
+  const { name, price, images } = items; // This is coming from the real database..... not from the supabase
 
   return (
     <>
       <div style={styles.productCard}>
-        <img alt="Product" style={styles.productImg} />
+        <img src={images} alt="Product" style={styles.productImg} />
         <h4 style={styles.productTitle}>{name}</h4>
         <p style={styles.productPrice}>₹{price}</p>
 

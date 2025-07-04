@@ -1,16 +1,22 @@
 import ProfileCard from "./ProfileCard";
 import { useDispatch, useSelector } from "react-redux";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { useItems } from "../../hooks/useItems";
 import { updateSearchName } from "../searchSlice";
 import AdBarr from "../advertisement/AdBarr";
 import LogInLink from "../authentication/LogInLink";
 import Navbarlist from "../Navbarlist";
 import CardSkeleton from "./CardSkeleton";
+import { useProducts } from "../user/useProduct";
 
 function NormalUser() {
   const dispatch = useDispatch();
-  const { data: items, isLoading } = useItems();
+  const { data, isLoading, isError } = useProducts();
+  const { name } = useParams();
+  console.log(name);
+  const products = data?.data?.products || [];
+
+  // const { data: items, isLoading } = useItems();
 
   const searchName = useSelector((state) => state.search.searchName);
   const username = useSelector((state) => state.user.username);
@@ -31,6 +37,10 @@ function NormalUser() {
           <button className="search-button">🔍</button>
         </div>
 
+        <Link className="login-button-1" to={"/profile"}>
+          Become a seller
+        </Link>
+
         <LogInLink username={username} />
       </header>
 
@@ -39,7 +49,7 @@ function NormalUser() {
 
         {isLoading
           ? "loading"
-          : items.map((item) => <Navbarlist item={item} key={item.id} />)}
+          : products.map((item) => <Navbarlist item={item} key={item._id} />)}
       </nav>
 
       <AdBarr />
@@ -48,7 +58,7 @@ function NormalUser() {
         {isLoading ? (
           <CardSkeleton card={9} />
         ) : (
-          items.map((item) => <ProfileCard item={item} key={item.id} />)
+          products.map((item) => <ProfileCard item={item} key={item._id} />)
         )}
       </main>
     </>

@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { data, Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { useItems } from "../hooks/useItems";
 import Navbarlist from "./Navbarlist";
@@ -7,12 +7,14 @@ import { BsPersonCircle } from "react-icons/bs";
 import LogInLink from "./authentication/LogInLink";
 import Skeleton from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
+import { useProducts } from "./user/useProduct";
 
 function NavBar() {
   const username = useSelector((state) => state.user.username);
   const searchname = useSelector((state) => state.search.searchName);
-  console.log(searchname);
-  const { data: items, isLoading } = useItems();
+  // const { data: items, isLoading } = useItems();
+  const { data, isLoading } = useProducts();
+  const products = data?.data?.products || [];
   const dispatch = useDispatch();
 
   function handleSearch(e) {
@@ -60,7 +62,7 @@ function NavBar() {
         {isLoading ? (
           <Skeleton />
         ) : (
-          items.map((item) => <Navbarlist item={item} key={item.id} />)
+          products.map((item) => <Navbarlist item={item} key={item._id} />)
         )}
       </nav>
     </>

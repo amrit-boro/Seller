@@ -1,4 +1,7 @@
+import { useNavigate } from "react-router-dom";
+
 function BecomeSellerLanding({ onCreateProfile }) {
+  const navigate = useNavigate();
   return (
     <div className="containerStyle">
       <div className="cardStyle">
@@ -8,9 +11,18 @@ function BecomeSellerLanding({ onCreateProfile }) {
           Build your business with us. Create your seller profile to get
           started.
         </p>
+
         <button onClick={onCreateProfile} className="buttonStyle">
-          Create Your Seller Profile
+          Create Profile
         </button>
+        <div>
+          <button
+            className="buttonStyle"
+            onClick={() => navigate("/seller/Login")}
+          >
+            LogIn
+          </button>
+        </div>
       </div>
     </div>
   );

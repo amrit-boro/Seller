@@ -13,6 +13,7 @@ import Profilee from "./features/NormalUser/Profilee";
 import Profile from "./features/SellerProfile/Profile";
 import Borrow from "./features/Item/Borrow";
 import VisitProfile from "./features/ui/VisitProfile";
+import SellerLongin from "./features/authentication/SellerLogin";
 
 const router = createBrowserRouter([
   {
@@ -31,6 +32,10 @@ const router = createBrowserRouter([
   {
     path: "/:id",
     element: <Profilee />,
+  },
+  {
+    path: "/seller/Login",
+    element: <SellerLongin />,
   },
   {
     path: "/profile",

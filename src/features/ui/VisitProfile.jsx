@@ -146,15 +146,6 @@ function VisitProfile() {
           <Link className="logo2" to={"/"}>
             ShopZone
           </Link>
-          <div className="search-container">
-            <input
-              type="text"
-              onChange={handleSearch}
-              value={searchname}
-              placeholder="Search for products..."
-            />
-            <button className="search-button">🔍</button>
-          </div>
 
           <div className="header-buttons">
             {/* Seller */}
@@ -168,8 +159,6 @@ function VisitProfile() {
               </div>
               <LogInLink username={username} />
             </div>
-
-            <button className="cart-btn-1">🛒 Cart</button>
           </div>
         </header>
         <div className="visit-main-content">

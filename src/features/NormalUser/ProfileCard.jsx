@@ -4,14 +4,7 @@ import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
 const ProfileCard = ({ item }) => {
-  const {
-    name: itemName,
-    img,
-    id,
-    SellerName,
-    itemDescription,
-    Location,
-  } = item;
+  const { name: itemName, images, _id, seller, description, createdAt } = item;
 
   const isAuthenticate = useSelector((state) => state.user.isAuthenticate);
 
@@ -20,8 +13,8 @@ const ProfileCard = ({ item }) => {
 
   function handleToggle() {
     // setShowBig((prev) => !prev);
-    navigate(`/${id}`, {
-      state: { itemName, img, SellerName, itemDescription, Location, id },
+    navigate(`/${_id}`, {
+      state: { itemName, images, seller, description, createdAt, _id },
     });
   }
 
@@ -29,43 +22,50 @@ const ProfileCard = ({ item }) => {
     if (!isAuthenticate) {
       navigate("/login");
     } else {
-      navigate(`/borrow/${id}`, { state: img });
+      navigate(`/borrow/${_id}`, { state: images });
     }
   }
 
   return (
-    <div className="card-container">
-      {/* Card Outer Wrapper */}
-      <div className="profile-card2">
-        {/* Image Secion */}
+    // Inside ProfileCard Component
+    <div className="profile-card2">
+      {/* Image */}
+      <img src={images} alt="Product" className="profile-img2" />
+
+      {/* Info */}
+      <div className="profile-info2">
         <div>
-          <img src={img} alt={itemName} className="profile-img2" />
+          <div className="item-title">{itemName}</div>
+
+          <div className="profile-name2">
+            <BsPersonCircle size={14} />
+            <span className="seller-id">{seller.slice(0, 16)}...</span>
+          </div>
+
+          <div className="profile-items2">
+            Description: {description.slice(0, 100)}
+          </div>
+
+          <div className="created-at">
+            {new Date(createdAt).toLocaleDateString("en-IN", {
+              year: "numeric",
+              month: "short",
+              day: "numeric",
+            })}
+          </div>
+
+          <div className="price">
+            Rs: <span>400</span>
+          </div>
         </div>
 
-        {/* Info Section */}
-        <div className="profile-info2">
-          {/* Seller & Item Details */}
-          <div>
-            <div className="profile-name2">
-              <BsPersonCircle />
-              {SellerName}
-            </div>
-            <div className="profile-items2">
-              Item Description: {itemDescription}
-            </div>
-            <div className="profile-items2">Location: {Location}</div>
-            <div style={{ fontWeight: "bold" }}>{itemName}</div>
-          </div>
-
-          {/* Buttons */}
-          <div className="profile-buttons">
-            <button className="colorbrw" onClick={handleToggle}>
-              More detail
-            </button>
-            <button className="borrow" onClick={handleBorrow}>
-              Borrow
-            </button>
-          </div>
+        <div className="profile-buttons">
+          <button className="colorbrw" onClick={handleToggle}>
+            More
+          </button>
+          <button className="borrow" onClick={handleBorrow}>
+            Borrow
+          </button>
         </div>
       </div>
     </div>

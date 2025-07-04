@@ -1,41 +1,59 @@
 import React from "react";
 import SellerProducts from "./SellerProducts";
+import { Link } from "react-router-dom";
+import LogInLink from "../authentication/LogInLink";
+import { BsPersonCircle } from "react-icons/bs";
 
 const categories = ["Electronics", "Clothing", "Home", "Toys", "Books"];
 
 const Profile = ({ seller }) => {
   return (
-    <div style={styles.container}>
-      {/* Sidebar */}
-      <div style={styles.sidebar}>
-        <div style={styles.profileSection}>
-          <div style={styles.avatar}></div>
-          <p>{seller?.name || "User Name"}</p>
-          <p>⭐ {seller?.rating || "4.5"}</p>
+    <>
+      <header className="top-bar2">
+        {/* <div className="logo2">ShopeZone</div> */}
+        <Link className="logo2" to={"/"}>
+          ShopZone
+        </Link>
+
+        <div className="header-buttons">
+          {/* Seller */}
+
+          <button className="cart-btn-1">🛒 Cart</button>
         </div>
-        <div style={styles.sidebarButtons}>
-          <button>Edit Profile</button>
-          <button>Orders</button>
-          <button>Add Product</button>
+      </header>
+
+      <div style={styles.container}>
+        {/* Sidebar */}
+        <div style={styles.sidebar}>
+          <div style={styles.profileSection}>
+            <div style={styles.avatar}></div>
+            <p>{seller?.name || "User Name"}</p>
+            <p>⭐ {seller?.rating || "4.5"}</p>
+          </div>
+          <div style={styles.sidebarButtons}>
+            <button>Edit Profile</button>
+            <button>Orders</button>
+            <button>Add Product</button>
+          </div>
+        </div>
+
+        {/* Main Content */}
+        <div style={styles.mainContent}>
+          {/* Navbar */}
+          <div style={styles.navbar}>
+            {categories.map((cat, index) => (
+              <div key={index} style={styles.navItem}>
+                {cat}
+              </div>
+            ))}
+            <div style={{ marginLeft: "auto", cursor: "pointer" }}>☰</div>
+          </div>
+
+          {/* Product Grid */}
+          <SellerProducts />
         </div>
       </div>
-
-      {/* Main Content */}
-      <div style={styles.mainContent}>
-        {/* Navbar */}
-        <div style={styles.navbar}>
-          {categories.map((cat, index) => (
-            <div key={index} style={styles.navItem}>
-              {cat}
-            </div>
-          ))}
-          <div style={{ marginLeft: "auto", cursor: "pointer" }}>☰</div>
-        </div>
-
-        {/* Product Grid */}
-        <SellerProducts />
-      </div>
-    </div>
+    </>
   );
 };
 

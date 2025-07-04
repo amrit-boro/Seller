@@ -3,9 +3,9 @@ import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
 function ItemDetails({
-  img,
+  images,
   SellerName,
-  itemDescription,
+  description,
   Location,
   itemName,
   id,
@@ -19,7 +19,7 @@ function ItemDetails({
     if (!isAuthenticate) {
       navigate("/login");
     } else {
-      navigate(`/borrow/${id}`, { state: img });
+      navigate(`/borrow/${id}`, { state: images });
     }
   }
 
@@ -51,7 +51,7 @@ function ItemDetails({
         {/* Image + Buttons + About */}
         <div style={styles.imageSection}>
           <img
-            src={img}
+            src={images}
             alt="Product"
             style={styles.image}
             onClick={handleImageClick}
@@ -67,7 +67,7 @@ function ItemDetails({
           <div style={styles.about}>
             <strong>About Product:</strong>
             <br />
-            {itemDescription}
+            {description}
           </div>
         </div>
 
@@ -102,7 +102,7 @@ function ItemDetails({
             <button style={styles.closeButton} onClick={handleCloseModal}>
               ×
             </button>
-            <img src={img} alt="Zoomed" style={styles.modalImage} />
+            <img src={images} alt="Zoomed" style={styles.modalImage} />
           </div>
         </div>
       )}

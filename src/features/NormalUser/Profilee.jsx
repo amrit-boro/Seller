@@ -1,16 +1,24 @@
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useParams } from "react-router-dom";
 import AdBarr from "../advertisement/AdBarr";
 import { useSelector } from "react-redux";
 import ItemDetails from "../Item/ItemDettails";
 import Navbarlist from "../Navbarlist";
 import { useItems } from "../../hooks/useItems";
+import { useEffect, useState } from "react";
+// import axios from "axios";
 
 function Profilee() {
   const location = useLocation();
   const { data: items, isLoading } = useItems();
   const username = useSelector((state) => state.user.username);
-  const { itemName, img, SellerName, itemDescription, Location, id } =
+  const { itemName, images, SellerName, description, Location, id } =
     location.state;
+  // useEffect(() => {
+  //   axios
+  //     .get(`http://localhost:3002/api/v1/product/${productName}`)
+  //     .then((res) => setProduct(res.data))
+  //     .catch((err) => console.error(err));
+  // }, [productName]);
 
   // const {
   //   name: itemName,
@@ -52,9 +60,9 @@ function Profilee() {
       {/* <AdBarr itemName={itemName} discount={10} /> */}
 
       <ItemDetails
-        img={img}
+        images={images}
         SellerName={SellerName}
-        itemDescription={itemDescription}
+        description={description}
         Location={Location}
         itemName={itemName}
         id={id}

@@ -65,7 +65,7 @@ export default function ProfileCreate() {
   const styles = {
     container: {
       maxWidth: 600,
-      margin: "2rem auto",
+      margin: "1rem auto",
       padding: "1rem",
       border: "1px solid #ccc",
       borderRadius: 8,
